@@ -1,0 +1,61 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#main-container{
+    height: 100vh;
+    width: 100vw;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url("jojo.png") no-repeat center center /cover;
+    box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0.4); 
+}
+
+.keys{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
+.key{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 10px;
+    width: 110px;
+    min-height: 110px;
+    border: 5px black solid;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 100vw rgba(0, 0, 0, 0.6); 
+    transition: all ease-in-out 0.1s;
+    cursor: pointer;
+}
+
+.key kbd{
+    font-weight: bold;
+    font-size: 40px;
+    color: #fff;
+    text-shadow: black 2px 2px 2px;
+}
+
+.key .sound{
+    display: block;
+    font-size: 12px;
+    color: #ffc600;
+    text-transform: uppercase;
+    text-shadow: black 2px 2px 1px;
+}
+
+.playing{
+    transform: scale(1.1);    
+    box-shadow: #ffc600 0px 0px 30px;
+    border-color: #ffc600;
+}
