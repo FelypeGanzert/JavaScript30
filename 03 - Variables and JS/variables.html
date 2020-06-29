@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varibles and JS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section id="main-section">
+        <h1>Update CSS Variables with <span class="destac">JS</span></h1>
+        <div class="inputs">
+            <div>
+                <label for="border-size">Border:</label>
+                <input type="range" name="border-size" id="border-size" min="0" max="100" data-sizing="px" value="5">
+            </div>
+
+            <div>
+                <label for="border-color">Border Color:</label>
+                <input type="color" name="border-color" id="border-color" value="#ffa55c">
+            </div>
+
+            <div>
+                <label for="blur">Blur:</label>
+                <input type="range" name="blur" id="blur" min="0" max="15" data-sizing="px" value="0">
+            </div>
+
+            <div>
+                <label for="scale">Scale:</label>
+                <input type="range" name="scale" id="scale" min="1" max="10" step="0.01" value="1">
+            </div>
+        </div>
+        <div class="image-container">
+            <div></div>
+            <img src="city.jpg" alt="City">
+        </div>
+    </section>
+
+    <script>
+
+        function handleChange() {
+            const sizing = this.dataset.sizing || '';
+            document.body.style.setProperty(`--${this.id}`, `${this.value}${sizing}`);
+            console.log(`id: --${this.id}, value: ${this.value} ${sizing}`)
+        }
+        const inputs = document.querySelectorAll('.inputs input');
+
+        inputs.forEach(input => {
+            input.addEventListener('change', handleChange);
+            input.addEventListener('mousemove', handleChange)
+        });
+
+    </script>
+
+</body>
+
+</html>
