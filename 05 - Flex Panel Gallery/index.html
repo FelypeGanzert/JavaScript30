@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Panel Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: cursive;
+        }
+
+        #gallery {
+            display: flex;
+            min-width: 100vw;
+            min-height: 100vh;
+            user-select: none;
+        }
+
+        #gallery div {
+            overflow: hidden;
+            cursor: pointer;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            padding: 5px;
+            text-shadow: rgb(0, 0, 0) 3px 3px 5px;
+            color: #fff;
+            box-shadow: inset 5px 5px 10px 5px #000000be;
+            transition: all cubic-bezier(0.13, 0.71, 0.89, 0.15) 0.5s;
+        }
+
+        #gallery div span {
+            transition: all ease-in-out 0.4s;
+            display: block;
+            text-align: center;
+        }
+
+        #gallery div span:first-child {
+            transform: scale(0) translateY(-20vh);
+        }
+
+        #gallery div span:last-child {
+            transform: scale(0) translateY(20vh);
+        }
+
+        #gallery div span.main {
+            transform: scale(1);
+            font-size: 2.5rem;
+            transition: all ease-in-out 0.4s;
+        }
+
+        #gallery div.active {
+            flex: 5;
+        }
+
+        #gallery div.active span {
+            font-size: 2rem;
+            transform: scale(1);
+        }
+
+        #gallery div.active span.main {
+            font-size: 4rem;
+        }
+
+        @media (max-width: 700px){
+            #gallery {
+                flex-direction: column;
+            }
+            #gallery div span.main {
+                font-size: 2rem;
+            }
+            #gallery div.active span {
+                font-size: 1.5rem;
+            }
+            #gallery div.active span.main {
+                font-size: 3rem;
+            }
+        }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gallery">
+        <div style="background-image: url('pexels-daria-shevtsova-887767.jpg');">
+            <span>HEY</span>
+            <span class="main">LET'S</span>
+            <span>DANCE</span>
+        </div>
+        <div style="background-image: url('pexels-hal-nixon-3207972.jpg');">
+            <span>GIVE</span>
+            <span class="main">TAKE</span>
+            <span>RECEIVE</span>
+        </div>
+        <div style="background-image: url('pexels-kaboompics-com-5639.jpg');">
+            <span>EXPERIENCE</span>
+            <span class="main">IT</span>
+            <span>TODAY</span>
+        </div>
+        <div style="background-image: url('pexels-valeriia-miller-2610300.jpg');">
+            <span>GIVE</span>
+            <span class="main">ALL</span>
+            <span>YOU CAN</span>
+        </div>
+        <div style="background-image: url('pexels-valeriia-miller-3146180.jpg');">
+            <span>LIFE</span>
+            <span class="main">IN</span>
+            <span>MOTION</span>
+        </div>
+    </div>
+
+    <script>
+        let gallery = document.querySelectorAll("#gallery div");
+        gallery.forEach(s => {
+            s.addEventListener("click", event => {
+                event.preventDefault();
+                let activesDivs = document.querySelectorAll("#gallery div.active");
+                activesDivs.forEach(d => {
+                    if (d != s) {
+                        d.classList.remove("active")
+                    }
+                });
+                s.classList.toggle("active");
+            })
+        });
+    </script>
+</body>
+
+</html>
